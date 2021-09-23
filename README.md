@@ -1,1 +1,1 @@
-# Fridoulin-SWP_Rubner
+# Fridoulin-SWP_Python
