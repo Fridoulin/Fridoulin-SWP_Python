@@ -1,35 +1,18 @@
 import random
 
 while True:
-    choice = ["schere", "stein", "papier"]
-    pc = random.choice(choice)
-    player = None
     player = input("schere, stein, papier: ").lower()
-    if player == pc:
-        print("Computer: ", pc, "   Spieler: ", player)
-        print("Unentschieden!")
-    elif player == "schere":
-        if pc == "papier":
-            print("Computer: ", pc, "   Spieler: ", player)
-            print("Gewonnen!")
-        if pc == "stein":
-            print("Computer: ", pc, "   Spieler: ", player)
-            print("Verloren!")
-    elif player == "stein":
-        if pc == "schere":
-            print("Computer: ", pc, "   Spieler: ", player)
-            print("Gewonnen!")
-        if pc == "papier":
-            print("Computer: ", pc, "   Spieler: ", player)
-            print("Verloren!")
-    elif player == "papier":
-        if pc == "stein":
-            print("Computer: ", pc, "   Spieler: ", player)
-            print("Gewonnen!")
-        if pc == "schere":
-            print("Computer: ", pc, "   Spieler: ", player)
-            print("Verloren!")
+    choice = ["schere", "stein", "papier"]
+    computer = random.choice(choice)
+    print("Spieler:", player)
+    print("Computer:", computer)
+    guess_index = {'schere': 0, 'stein': 1, 'papier': 2}
+    guess_player = guess_index.get(player, 3)
+    guess_computer = guess_index.get(computer)
+    possible_results = [[0, 2, 1], [1, 0, 2], [2, 1, 0], [3, 3, 3]]
+    result_compare = possible_results[guess_player][guess_computer]
+    result_messages = ["Unentschieden", "Gewonnen", 'Verloren', 'Ungültige Eingabe']
+    print(result_messages[result_compare])
     again = input("Nochmal [j/n]? ")
     if again != "j":
         break
-
