@@ -1,20 +1,23 @@
 import mysql.connector
-def connection():
-    mydb = mysql.connector.connect(
+
+
+def connect():
+    conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="NicerSpeck#"
+        password="NicerSpeck#",
+        database="RockPaperScissors"
     )
+    return conn
 
-def database():
-    stmt = mydb.cursor()
-    stmt.execute("create database if not exists RockPaperScissors;")
+
+def database(val):
+    conn = connect()
+    stmt = conn.cursor()
     stmt.execute("use RockPaperScissors")
-    stmt.execute("CREATE TABLE if not exists customers (name VARCHAR(255), address VARCHAR(255));")
-    sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
-    stmt.execute(sql, val)
-    mydb.commit()
-    print(stmt.rowcount, "record inserted.")
-    stmt.execute("SELECT * FROM customers")
-    myresult = stmt.fetchone()
-    print(myresult)
+    stmt.execute("CREATE TABLE if not exists symbol (choice VARCHAR(255));")
+    query = "INSERT INTO symbol (choice) VALUES (%s)"
+    stmt.execute(query, (val,))
+    conn.commit()
+    stmt.close()
+    conn.close()
