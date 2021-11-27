@@ -1,10 +1,11 @@
 import random
-
+import DB
 
 def inputUser(valuableList):
     choice = input("Rock, Paper, Scissors, Lizard, Spock: ").lower()
     if choice in valuableList:
         print("Your Choice: ", choice)
+        DB.database(choice)
         return choice
     else:
         print("Try again")
@@ -21,7 +22,8 @@ def check(choiceUser, choiceComputer):
     guessToIndex = {"rock": 0, "spock": 1, "paper": 2, "lizard": 3, "scissors": 4}
     user = guessToIndex.get(choiceUser)
     pc = guessToIndex.get(choiceComputer)
-    return (user - pc) % 5
+    index = (user - pc) % 5
+    return index
 
 
 def winner(result):
