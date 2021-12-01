@@ -11,13 +11,13 @@ def connect():
     return conn
 
 
-def database(val):
+def database(choice, score):
     conn = connect()
     stmt = conn.cursor()
     stmt.execute("use RockPaperScissors")
-    stmt.execute("CREATE TABLE if not exists symbol (choice VARCHAR(255));")
-    query = "INSERT INTO symbol (choice) VALUES (%s)"
-    stmt.execute(query, (val,))
+    stmt.execute("CREATE TABLE if not exists symbol (choice VARCHAR(20), score Varchar(20));")
+    query = "INSERT INTO symbol (choice, score) VALUES (%s, %s)"
+    stmt.execute(query, (choice, score))
     conn.commit()
     stmt.close()
     conn.close()
