@@ -1,15 +1,18 @@
 import random
 import DB
 
+
+
 def inputUser(valuableList):
-    choice = input("Rock, Paper, Scissors, Lizard, Spock: ").lower()
-    if choice in valuableList:
-        print("Your Choice: ", choice)
-        DB.database(choice)
-        return choice
+    global userChoice
+    userChoice = input("Rock, Paper, Scissors, Lizard, Spock: ").lower()
+    if userChoice in valuableList:
+        print("Your Choice: ", userChoice)
+        return userChoice
     else:
         print("Try again")
-        main()
+        print(userChoice)
+        return inputUser(valuableList)
 
 
 def inputComputer(valuableList):
@@ -27,11 +30,15 @@ def check(choiceUser, choiceComputer):
 
 
 def winner(result):
+    global score
     if result == 0:
+        score = "Draw"
         print("Draw")
     elif result == 1 or result == 2:
+        score = "Won"
         print("Won")
     elif result > 2:
+        score = "Lost"
         print("Lost")
     print("\n")
 
@@ -42,12 +49,24 @@ def main():
     choiceComputer = inputComputer(valuableList)
     result = check(choiceUser, choiceComputer)
     winner(result)
+    insert()
 
+
+def again():
+    again = input("Try again[y,n]: ").lower()
+    if (again == "y"):
+        return True
+    elif (again == "n"):
+        return False
+    else:
+        again()
+
+def insert():
+    DB.database(userChoice, score)
 
 while True:
     if __name__ == "__main__":
         main()
-
-    again = input("Try again [y,n]? ")
-    if again == "n":
+    if again() == False:
         break
+
