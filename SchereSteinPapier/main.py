@@ -49,7 +49,7 @@ def main():
     choiceComputer = inputComputer(valuableList)
     result = check(choiceUser, choiceComputer)
     winner(result)
-    insert()
+    db()
 
 
 def again():
@@ -61,12 +61,12 @@ def again():
     else:
         again()
 
-def insert():
+def db():
     DB.database(userChoice, score)
+    DB.select()
 
 while True:
     if __name__ == "__main__":
         main()
     if again() == False:
         break
-
