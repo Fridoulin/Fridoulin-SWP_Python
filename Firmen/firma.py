@@ -15,16 +15,20 @@ class Abteilung(Enum):
 
 
 class Person():
-    def __init__(self, Abteilung=Abteilung.einkauf, Sex=Sex.Mann):
-        self.Abteilung = Abteilung
-        self.Sex = Sex
+    def __init__(self, vorname, name, sex, abteilung):
+        self.vorname = vorname
+        self.name = name
+        self.Abteilung = abteilung
+        self.Sex = sex
 
 
 class Mitarbeiter(Person):
-    def __init__(self, dep: Abteilung = Abteilung.produktion, sex: Sex = Sex.Frau):
-        super().__init__(dep, sex)
+    def __init__(self, vorname, name, sex, abteilung, gehalt):
+        super().__init__(vorname, name, sex, abteilung)
+        self.Gehalt = gehalt
 
 
 class Gruppenleiter(Mitarbeiter):
-    def __init__(self, dep: Abteilung = Abteilung.verkauf, sex: Sex = Sex.Mann):
-        super().__init__(dep, sex)
+    def __init__(self, vorname, name, sex, abteilung, gehalt, id):
+        super().__init__(vorname, name, sex, abteilung, gehalt)
+        self.Id = id
