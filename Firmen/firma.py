@@ -15,7 +15,7 @@ class Abteilung(Enum):
 
 
 class Person():
-    def __init__(self, vorname, name, sex, abteilung):
+    def __init__(self, sex, vorname, name, abteilung):
         self.vorname = vorname
         self.name = name
         self.Abteilung = abteilung
@@ -23,12 +23,12 @@ class Person():
 
 
 class Mitarbeiter(Person):
-    def __init__(self, vorname, name, sex, abteilung, gehalt):
+    def __init__(self, sex, vorname, name, abteilung, gehalt):
         super().__init__(vorname, name, sex, abteilung)
         self.Gehalt = gehalt
 
 
 class Gruppenleiter(Mitarbeiter):
-    def __init__(self, vorname, name, sex, abteilung, gehalt, id):
+    def __init__(self,sex, vorname, name, abteilung, gehalt, id):
         super().__init__(vorname, name, sex, abteilung, gehalt)
         self.Id = id
