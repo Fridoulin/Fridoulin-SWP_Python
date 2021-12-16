@@ -1,18 +1,16 @@
+import random
+
 import firma as f
 
 Person = []
 Mitarbeiter = []
 Gruppenleiter = []
 
-def add_Person():
-    return (f.Person(f.Sex.Mann, "Jochen", "Scherzer", f.Abteilung.einkauf),
-    f.Person(f.Sex.Mann, "Konstantin", "Bauschinger", f.Abteilung.einkauf),
-    f.Person(f.Sex.Frau, "Maria", "Rosenblum", f.Abteilung.produktion),
-    f.Person(f.Sex.Frau, "Helge", "Werkner", f.Abteilung.verkauf),
-    f.Person(f.Sex.Mann, "Reiner", "Adelman", f.Abteilung.produktion),
-    f.Person(f.Sex.Mann, "Justin", "Bodenheimer", f.Abteilung.verkauf),
-    f.Person(f.Sex.Mann, "Phillip", "Strassmann", f.Abteilung.produktion),
-    f.Person(f.Sex.Mann, "Antonin", "Tendler", f.Abteilung.einkauf))
+def addOnePerson():
+    return f.Person(random.choice(list(f.Sex)), "SDF", "SDF", random.choice(list(f.Abteilung)))
+
+
+
 
 def add_Mitarbeiter():
     return (f.Mitarbeiter(f.Sex.Mann, "Sebastian", "Rimml", f.Abteilung.einkauf, 7541),
@@ -45,8 +43,8 @@ def get_MannZuFrauAnteil():
     for g in Gruppenleiter:
         if g.Sex == f.Sex.Mann:
             mann += 1
-    print("X", mann)
-    return "%: " + str(round(mann / (len(Person) + len(Mitarbeiter) + len(Gruppenleiter)), 2) * 100) + " / " + str(round(
+    return "%: " + str(
+        round(mann / (len(Person) + len(Mitarbeiter) + len(Gruppenleiter)), 2) * 100) + " / " + str(round(
         (len(Person) + len(Mitarbeiter) + len(Gruppenleiter) - mann) / (
                 len(Person) + len(Mitarbeiter) + len(Gruppenleiter)), 2) * 100)
 
@@ -66,8 +64,12 @@ def get_Meisten_Mitarbeiter(ab):
 
     return anzahl_Mitarbeiter
 
+
+
 if __name__ == '__main__':
-    Person = add_Person()
+
+   # Person = add_Person()
+    Person = [addOnePerson() for x in range(10)]
     Mitarbeiter = add_Mitarbeiter()
     Gruppenleiter = add_Gruppenleiter()
     print("Mitarbeiter: " + str(get_Anzahl()[0]))
