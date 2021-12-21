@@ -43,6 +43,20 @@ def winner(result):
     print("\n")
 
 
+def again():
+    again = input("Try again[y,n]: ").lower()
+    if (again == "y"):
+        return True
+    elif (again == "n"):
+        return False
+    else:
+        return False
+
+def db():
+    DB.database(userChoice, score)
+    DB.select()
+
+
 def main():
     valuableList = ["rock", "spock", "paper", "lizard", "scissors"]
     choiceUser = inputUser(valuableList)
@@ -51,19 +65,6 @@ def main():
     winner(result)
     db()
 
-
-def again():
-    again = input("Try again[y,n]: ").lower()
-    if (again == "y"):
-        return True
-    elif (again == "n"):
-        return False
-    else:
-        again()
-
-def db():
-    DB.database(userChoice, score)
-    DB.select()
 
 while True:
     if __name__ == "__main__":
