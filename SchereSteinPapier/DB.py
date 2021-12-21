@@ -1,5 +1,5 @@
 import mysql.connector
-
+import requests
 
 def connect():
     conn = mysql.connector.connect(
@@ -35,6 +35,36 @@ def select():
     lizard = stmt.fetchall()
     stmt.execute('select count(choice) as "Spock" from symbol where choice = "spock";')
     spock = stmt.fetchall()
-    print("Rock", rock,"    Paper", paper,"   Scissors", scissors,"   Lizard", lizard,"   Spock", spock)
+    rock = str(rock).replace('[(','').replace(',)]','')
+    paper = str(paper).replace('[(','').replace(',)]','')
+    scissors = str(scissors).replace('[(','').replace(',)]','')
+    lizard = str(lizard).replace('[(','').replace(',)]','')
+    spock = str(spock).replace('[(','').replace(',)]','')
+    print("Rock: ", rock,"    Paper: ", paper,"   Scissors: ", scissors,"   Lizard: ", lizard,"   Spock: ", spock)
+
+    print("sending test request")
+    sendRequest("Niklas",scissors,rock,paper,spock, lizard)
+    code = sendRequest("Niklas", 1, 2, 3, 4, 5)
+    #print(code = " + str(code))
+    print("Done")
     stmt.close()
     conn.close()
+
+
+
+def sendRequest(username, voteScissors, voteRock, votePaper, voteSpock, voteLizard, apiIP = "http://127.0.0.1:5000"):
+    reqUrl = apiIP + "/v1/updateRecord"
+    reqUrl+= "?username=" + str(username) + "&voteScissors=" + str(voteScissors)
+    reqUrl+= "&voteRock=" + str(voteRock) + "&votePaper=" + str(votePaper)
+    reqUrl+= "&voteSpock=" + str(voteSpock) + "&voteLizard=" + str(voteLizard)
+    responseCode = 0
+    try:
+        response = requests.post(reqUrl, None)
+        responseCode = response.status_code
+    except:
+        return 0
+    return responseCode
+
+def send_request(rock, paper, scissors, lizard, spock):
+
+    return sendRequest("Niklas", rock, paper, scissors, lizard, spock)
