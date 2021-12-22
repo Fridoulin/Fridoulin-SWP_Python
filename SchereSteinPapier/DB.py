@@ -43,8 +43,8 @@ def select():
     print("Rock: ", rock,"    Paper: ", paper,"   Scissors: ", scissors,"   Lizard: ", lizard,"   Spock: ", spock)
 
     print("sending test request")
-    sendRequest("Niklas",scissors,rock,paper,spock, lizard)
-    code = sendRequest("Niklas", 1, 2, 3, 4, 5)
+    sendRequest("User",scissors,rock,paper,spock, lizard)
+    code = sendRequest("User", 1, 2, 3, 4, 5)
     #print(code = " + str(code))
     print("Done")
     stmt.close()
@@ -67,4 +67,4 @@ def sendRequest(username, voteScissors, voteRock, votePaper, voteSpock, voteLiza
 
 def send_request(rock, paper, scissors, lizard, spock):
 
-    return sendRequest("Niklas", rock, paper, scissors, lizard, spock)
+    return sendRequest("User", rock, paper, scissors, lizard, spock)
