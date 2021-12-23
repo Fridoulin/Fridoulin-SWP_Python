@@ -37,7 +37,12 @@ benötigt:</font></p>
 <p style="line-height: 100%; margin-bottom: 0.17in; background: #ffffff">
 <font color="#0563c1"><u><a href="https://www.w3schools.com/python/python_mysql_getstarted.asp">MySQL</a></u></font></p>
 <p style="line-height: 100%; margin-bottom: 0.17in; background: #ffffff">
-<font color="#24292f">Für den API-Aufruf:</font></p>
+  
+<font color="#24292f">Für den API-Aufruf das Repository downloaden und die .exe ausführen:</font></p>
+<p style="line-height: 100%; margin-bottom: 0.17in; background: #ffffff">
+<font color="#0563c1"><u><a href="https://gitlab.com/sh1n1xs/rock-paper-scissors-data-server/-/tree/main">.exe-Datei</a></u></font></p>
+  
+<font color="#24292f">Für den API-Aufruf in Python:</font></p>
 <p style="line-height: 100%; margin-bottom: 0.17in; background: #ffffff">
 <font color="#0563c1"><u><a href="https://www.w3schools.com/python/module_requests.asp">Requests</a></u></font></p>
 <p style="line-height: 100%; margin-bottom: 0.17in; background: #ffffff">
