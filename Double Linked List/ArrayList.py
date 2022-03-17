@@ -1,4 +1,5 @@
 import random
+import time
 
 
 class ArrayarrList:
@@ -72,7 +73,18 @@ class ArrayarrList:
                 j -= 1
             self.arrList[j + 1] = key
 
+    def min(self):
+        return print("Min: ",min(self.arrList))
 
+    def max(self):
+        return print("max: ",max(self.arrList))
+
+    def sum(self):
+        return print("Sum of all elements: ",sum(self.arrList))
+
+    def avg(self):
+        sumArr = sum(self.arrList)
+        return print("Avg: ",sumArr/len(self.arrList))
 
     def returnArrayarrList(self):
         output = []
@@ -81,22 +93,31 @@ class ArrayarrList:
         print(output)
 
 
+
 if __name__ == "__main__":
     arr = ArrayarrList()
     for i in range(10):
         arr.addItem(random.randint(0,10))
 
-    arr.returnArrayarrList()
+    # arr.returnArrayarrList()
     arr.addItemBefore(6,600)
-    arr.addItemAfter(6, 600)
+    # arr.returnArrayarrList()
+    # arr.addItemAfter(6, 600)
+    # arr.returnArrayarrList()
+    # arr.removeItemAfter(6)
     arr.returnArrayarrList()
-    arr.removeItemAfter(6)
     arr.removeItemBefore(6)
     arr.returnArrayarrList()
-    arr.findItem(1)
-    arr.getLength()
+    # arr.sortDESG()
+    # arr.returnArrayarrList()
+    start = time.time()
     arr.sortASC()
-    arr.sortASC()
-    arr.returnArrayarrList()
-    arr.sortDESG()
-    arr.returnArrayarrList()
+    end = time.time()
+    print(end-start)
+    # arr.returnArrayarrList()
+    # arr.findItem(1)
+    # arr.getLength()
+    # arr.min()
+    # arr.max()
+    # arr.sum()
+    # arr.avg()
